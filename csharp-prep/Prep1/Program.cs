@@ -1,4 +1,5 @@
 using System;
+using System.Linq.Expressions;
 
 class Program
 {
@@ -10,9 +11,10 @@ class Program
 
         // Print to terminal and recieve string from user
         Console.WriteLine("Please enter your first name: ");
-        firstName = "Young";
+        firstName = Console.ReadLine();
+    
         Console.WriteLine("Please enter your last name: ");
-        lastName = "Brigham";
+        lastName = Console.ReadLine();
 
         // Format string and print to terminal
         Console.WriteLine($"Your name is {lastName}, {firstName} {lastName}.");
