@@ -10,7 +10,9 @@ class Program
         string userInput = Console.ReadLine();
         int gradePercentage = int.Parse(userInput);
         string letterGrade = "";
-    
+
+
+        // If Block for gradePercentage
         if (gradePercentage >= 90)
         {
             letterGrade = "Your letter grade is A";
@@ -31,6 +33,11 @@ class Program
         {
             letterGrade = "Your letter grade is F";
         }
+
+        // Print letterGrade
+        Console.WriteLine($"{letterGrade}");
+
+        // Print pass or fail encoragment.
         if (gradePercentage >= 70)
         {
             Console.WriteLine("Congradulations! You passed this class!");
@@ -40,7 +47,7 @@ class Program
             Console.WriteLine("Better Luck Next Time!");
         }
 
-        Console.WriteLine($"{letterGrade}");
+        
 
     }
 }
