@@ -15,7 +15,7 @@ class Program
 
         // Produce a random magicNumber from 1 - 100
         Random randomGenerator = new Random();
-        int magicNumber = randomGenerator.Next(1,11);
+        int magicNumber = randomGenerator.Next(1,101);
 
         // Initialize User Continue
         string userContinue = "yes";
