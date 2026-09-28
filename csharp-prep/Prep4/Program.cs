@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 
 class Program
@@ -12,6 +13,13 @@ class Program
 
         // Intialize userNumber
         int userNumber = 0;
+        // Imitialize sum
+        int sumNumbers = 0;
+        // Initialize average
+        double avgNumber = 0;
+        int listNumber = 0;
+        // Initialize Largest number
+        int largestNumber = 0;
 
         //Do loop
         do
@@ -30,14 +38,27 @@ class Program
         // Append to list numbers
         numbers.Add(userNumber);
 
-        if (userNumber == 0)
+        foreach (int num in numbers)
             {
-                foreach (int number in numbers)
+                sumNumbers = sumNumbers + num;
+
+                listNumber += 1;
+                avgNumber = sumNumbers / listNumber;
+                if (num > largestNumber)
                 {
-                    Console.WriteLine(number);
+                    largestNumber = num;
                 }
+                
             }
         } while (userNumber != 0);
 
+        // print Sum
+        Console.WriteLine($"The Sum is: {sumNumbers}");
+
+        // print Avg
+        Console.WriteLine($"The average is: {avgNumber}");
+
+        // print Largest Number
+        Console.WriteLine($"The largest number is: {largestNumber}");
     }
 }
