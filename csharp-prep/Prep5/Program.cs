@@ -33,7 +33,7 @@ class Program
         return userNumber;
     }
 
-    //
+    // Ask userBirthYear and out int
     static void UserBirthYear(out int userBirthYear)
     {
         Console.Write("Please enter the year you were born: ");
@@ -41,7 +41,7 @@ class Program
 
     }
 
-    //
+    // int userNumber ^2
     static int SquareNumber(int userNumber)
     {
      int squareNumber = userNumber * userNumber;
@@ -49,7 +49,7 @@ class Program
      return squareNumber;
     }
 
-    //
+    //Display results
     static void DisplayResult(string userName,int squareNumber, int userBirthYear)
     {
         Console.WriteLine($"{userName}, the square of your number is {squareNumber}");
