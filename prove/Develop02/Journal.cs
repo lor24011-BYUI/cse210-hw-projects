@@ -5,7 +5,14 @@ class Journal
 
     public void DisplayJournal()
     {
-        foreach(JournalEntry entry in _entries)
+        if (_entries.Count == 0)
+        {
+            Console.WriteLine("\nNo journal entries to display.\n");
+            return;
+        }
+
+        Console.WriteLine("\n--- Journal Entries ---");
+        foreach (JournalEntry entry in _entries)
         {
             entry.DisplayJournalEntry();
         }
@@ -30,12 +37,19 @@ class Journal
                 outputFile.WriteLine(entry.CreateFileSystem());
 
             }
-
+        Console.WriteLine($"\nJournal Saved to {filename}.\n");
         }
     }
     
     public void ReadFromFile(string filename)
     {
+
+    if (!File.Exists(filename))
+            {
+                Console.WriteLine($"\nFile '{filename}' not found.\n");
+                return;
+            }
+
         string[] lines = System.IO.File.ReadAllLines(filename);
 
 
