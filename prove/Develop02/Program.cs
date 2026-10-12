@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics.CodeAnalysis;
 
 class Program
 {
@@ -6,44 +7,31 @@ class Program
     {
         Menu myMenu = new Menu();
 
-        myMenu.ProcessMenu();
-
+        Journal myJournal = new Journal();
         
 
-        // Initialize Response
         int response = 0;
-        // while loop
+
         while(response != 5)
         {
-            //int response = myMenu.ProcessMenu();
-            switch (response)
+            response = myMenu.ProcessMenu();
+            switch(response)
             {
-                
-
                 case 1:
-                Console.WriteLine("Create");
-                    // Call CreateJournalEntry()
+                    myJournal.CreateEntry();
                     break;
-
                 case 2:
-                Console.WriteLine("Display");
-                    // Call DisplayJournal()
+                    myJournal.DisplayJournal();
                     break;
-
                 case 3:
-                Console.WriteLine("Save");
-                    // call ReadFromFile()
+                    Console.WriteLine("Save");
+                    // Call ReadFromFile()
                     break;
-                
                 case 4:
-                Console.WriteLine("Write");
-                    // call WriteToFile()
+                    Console.WriteLine("Write");
+                    // call WriteToFile
                     break;
             }
         }
     }
-
 }
-
-
-//
