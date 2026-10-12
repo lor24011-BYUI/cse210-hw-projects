@@ -10,8 +10,8 @@ class Menu
             Console.WriteLine("Create, Display, Save, or Read Journal Entries.");
             Console.WriteLine("1. Create new journal entry.");
             Console.WriteLine("2. Display all journal entries.");
-            Console.WriteLine("3. Save journal to a file.");
-            Console.WriteLine("4. Read journal from a file.");
+            Console.WriteLine("3. Read journal to a file.");
+            Console.WriteLine("4. Save journal from a file.");
             Console.WriteLine("5. Quit");
             Console.Write("> ");
             input = int.Parse(Console.ReadLine());
