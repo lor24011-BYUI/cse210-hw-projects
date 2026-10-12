@@ -24,4 +24,14 @@ class JournalEntry
         _response = Console.ReadLine();
     }
 
+    public void CreateFileSystem()
+    {
+         string outputString = "";
+
+
+        outputString = $"{_date}#{_entryQuestion}#{_journalEntry}";
+
+        return outputString;
+    }
+
 }
