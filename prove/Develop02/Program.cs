@@ -26,11 +26,23 @@ class Program
                 case 3:
                     Console.WriteLine("Save");
                     // Call ReadFromFile()
+                    string loadFile = Console.ReadLine();
+                    myJournal.ReadFromFile(loadFile);
                     break;
+
                 case 4:
                     Console.WriteLine("Write");
                     // call WriteToFile
+                    string saveFile = Console.ReadLine();
+                    myJournal.WriteToFile(saveFile);
                     break;
+
+                case 5:
+                    // Exit message
+                    Console.WriteLine();
+                    Console.WriteLine("Thank you for using Journal!");
+                 break;
+                    
             }
         }
     }
