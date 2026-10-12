@@ -24,14 +24,14 @@ class Program
                     myJournal.DisplayJournal();
                     break;
                 case 3:
-                    Console.WriteLine("Save");
+                    Console.WriteLine("Please enter fileName.");
                     // Call ReadFromFile()
                     string loadFile = Console.ReadLine();
                     myJournal.ReadFromFile(loadFile);
                     break;
 
                 case 4:
-                    Console.WriteLine("Write");
+                    Console.WriteLine("Please write a filename:");
                     // call WriteToFile
                     string saveFile = Console.ReadLine();
                     myJournal.WriteToFile(saveFile);
