@@ -1,20 +1,15 @@
 using System;
-using System.Runtime.CompilerServices;
-using System.Security.Cryptography.X509Certificates;
-
 class Program
 {
-    static double AddNumbers(double x , int y)
+     static void Main(string[] args)
     {
-        return x + y;
+        Circle myCircle = new Circle();
+
+        myCircle._radius = 10;
+
+        double area = myCircle.GetArea();
+
+        Console.WriteLine(area);
     }
 
-    static string MyName()
-    {
-    return "Bob";
-    }
-    static void Main(string[] args)
-    {
-        
-    }
 }
