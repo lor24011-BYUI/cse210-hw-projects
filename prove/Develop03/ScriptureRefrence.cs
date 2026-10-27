@@ -27,7 +27,7 @@ public class Reference
     }
 
     //format
-    public string GetDisplayTexy()
+    public string GetDisplayText()
     {
         if(_endVerse == -1)
         {
