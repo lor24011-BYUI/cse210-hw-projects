@@ -15,5 +15,24 @@ class Program
 
         Police myPolice = new Police("Gary", "Steven", 80, 350, "Guns");
         Console.WriteLine(myPolice.GetPoliceInformation());
+
+        List<Person> myPeople = new List<Person>();
+
+        myPeople.Add(myPerson);
+        myPeople.Add(myDoctor);
+        myPeople.Add(myPolice);
+
+        foreach(Person person in myPeople)
+        {
+            if (person is Doctor doctor)
+            {
+                Console.WriteLine(doctor.GetDoctorInformation());
+            }
+        
+            else
+            {
+                Console.WriteLine(person.GetPersonInformation());
+            }
+        }
     }
 }
