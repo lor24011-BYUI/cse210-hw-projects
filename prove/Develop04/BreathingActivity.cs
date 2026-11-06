@@ -1,22 +1,19 @@
 using System;
+using System.Runtime.CompilerServices;
 
-class BreathingActivity : BaseActivity
+// Inherit
+public class BreathingActivity : BaseActivity
 {
-        public void RunActivity()
+    // Inherit attributes :base
+
+    // Methods
+    public BreathingActivity(string name, string description)
     {
-        // Call Start
+        // Call BaseActivity, ObtainDuration
+    }
 
-        RunCountDownMessage("Get Ready", 5);
-        DateTime endTime = DateTime.Now.AddSeconds(20);
+    public void RunActivity()
+    {
         
-
-        while (DateTime.Now < endTime)
-        {
-            RunCountDownMessage("Breath In", 4);
-            RunCountDownMessage("Breath Out", 6);
-
-        }
-        
-        // Call EndActivity
     }
 }
