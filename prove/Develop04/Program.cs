@@ -43,6 +43,10 @@ public class Program
                     run = false;
                     Console.WriteLine("\nThank you for using the Mindfullness Program");
                     break; 
+
+                default:
+                    Console.WriteLine("\nInvalid Selection");
+                    break;
             }
         }
     }

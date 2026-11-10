@@ -12,9 +12,12 @@ using System;
         Console.WriteLine(" 4. Quit");
 
         // Recieve user input
-        string input = Console.ReadLine();
-        int choice =  int.Parse(input);
-
-        return choice;
+        int choice = int.Parse(Console.ReadLine());
+        if (choice >= 1 && choice <= 4)
+        {
+            return choice;
+        }
+        // Error catch
+        return -1;
     }
 }

@@ -31,7 +31,6 @@ public class BaseActivity
 
         // Get Ready message and spinner for 3 seconds
         DisplaySpinnerMessage("Get Ready...",3);
-        Console.WriteLine();
         Console.Clear();
     }
 
@@ -88,8 +87,6 @@ public class BaseActivity
 
     protected void DisplaySpinnerMessage(string message, int seconds)
     {
-        // Display Message and Spinner for duration
-
         // Turn off cursor
         Console.CursorVisible = false;
         // Display message and spinner (provided by Gary Godderidge /*)
@@ -98,17 +95,13 @@ public class BaseActivity
         string spinnerAnimation = "-\\|/";
         int index = 0;
         
-        DateTime stopTimer = DateTime.Now.AddSeconds(seconds);
+        DateTime stopTime = DateTime.Now.AddSeconds(seconds);
 
+        while (DateTime.Now < stopTime)
         {
             Console.Write($"{spinnerAnimation[index++ % spinnerAnimation.Length]}");
-            Console.Write("\b");
-            Thread.Sleep(300);
-
-        // Clear
-        Console.Write(new string('\b', message.Length)); 
-        Console.Write(new string(' ', message.Length)); 
-        Console.Write(new string('\b', message.Length));
+            Thread.Sleep(250);
+             Console.Write("\b \b");
         }
         //*
         // Turn on cursor
@@ -121,7 +114,7 @@ public class BaseActivity
 
         foreach (ListingPrompts prompt in prompts)
         {
-            if (prompt.GetHasBeenUsed() == false)
+            if (!prompt.GetHasBeenUsed() == false)
             {
                 unused.Add(prompt);
             }
