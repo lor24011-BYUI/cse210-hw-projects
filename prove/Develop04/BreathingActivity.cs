@@ -8,12 +8,26 @@ public class BreathingActivity : BaseActivity
 
     // Methods
     public BreathingActivity(string name, string description)
+        :base(name, description)
     {
         // Call BaseActivity, ObtainDuration
     }
 
     public void RunActivity()
     {
-        
+        StartActivity();
+
+        StartTime();
+
+        while (!HasTimerExpired())
+        {
+            Console.WriteLine();
+            RunCountDownMessage("Breath In", 4);
+            Console.WriteLine();
+            RunCountDownMessage("Breath Out", 6);
+            Console.WriteLine();
+        }
+
+        DisplayEnding();
     }
 }

@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Threading;
 
 public class BaseActivity
 {
@@ -20,43 +22,129 @@ public class BaseActivity
     protected void StartActivity()
     {
         // Start timer and description
+        Console.Clear();
+        // Activity name and description
+        Console.WriteLine($"Welcome to the {_name}. \n");
+        Console.WriteLine($"{_description} \n");
+        // Obtain user second duration
+        ObtainDuration();
+
+        // Get Ready message and spinner for 3 seconds
+        DisplaySpinnerMessage("Get Ready...",3);
+        Console.WriteLine();
+        Console.Clear();
     }
 
     protected void DisplayEnding()
     {
         // Dipslay end message
+        Console.WriteLine();
+        DisplaySpinnerMessage("Well Done!", 3);
+        Console.Clear();
+        DisplaySpinnerMessage($"\nYou have completed another {_duration} seconds of the {_name}.",3);
     }
 
-    protected void RunCountDownMessage(string message, int seconds)
-    {
-        // Take in a Message using activity and seconds using ObtainDuration
-    }
-
-    protected void DisplaySpinnerMessage(string message, int seconds)
-    {
-        // Display Message and Spinner for duratation
-    }
 
     protected void StartTime()
     {
-        // Using DateTime.Now.AddSeconds(ObtainDuration)
+        // Using DateTime.Now.AddSeconds(_duration)
+        _endTime = DateTime.Now.AddSeconds(_duration);
     }
 
     protected bool HasTimerExpired()
     {
-      // Check if DateTime.now is < StartTime   
+      // Check if DateTime.now is >= _endTime 
+      return DateTime.Now >= _endTime;
     }
 
     protected void ObtainDuration()
     {
         // using DateTime.now.Addseconds and console.ReadLine obtain duration
+        Console.Write("How long, in seconds, would you like for your session? "); 
+        string userDuration = Console.ReadLine(); 
+        // Parse User Input for Duration
+        _duration = int.Parse(userDuration);
     }
 
-    public string GetPromptString(List<ListingPrompts>)
+    protected void RunCountDownMessage(string message, int seconds)
     {
-        
+        // turn off cursor
+        Console.CursorVisible = false;
+        for (int i = seconds; i > 0; i--)
+        {
+            string displayMessage = $"{message} {i}";
+            Console.Write(displayMessage);
+            Thread.Sleep(1000);
+            
+            // Clear
+            Console.Write(new string('\b', displayMessage.Length)); 
+            Console.Write(new string(' ', displayMessage.Length)); 
+            Console.Write(new string('\b', displayMessage.Length));
+        }
+
+        // Turn on cursor
+        Console.CursorVisible = true;
     }
 
+    protected void DisplaySpinnerMessage(string message, int seconds)
+    {
+        // Display Message and Spinner for duration
 
+        // Turn off cursor
+        Console.CursorVisible = false;
+        // Display message and spinner (provided by Gary Godderidge /*)
+        //*
+         Console.Write($"{message} ");
+        string spinnerAnimation = "-\\|/";
+        int index = 0;
+        
+        DateTime stopTimer = DateTime.Now.AddSeconds(seconds);
+
+        {
+            Console.Write($"{spinnerAnimation[index++ % spinnerAnimation.Length]}");
+            Console.Write("\b");
+            Thread.Sleep(300);
+
+        // Clear
+        Console.Write(new string('\b', message.Length)); 
+        Console.Write(new string(' ', message.Length)); 
+        Console.Write(new string('\b', message.Length));
+        }
+        //*
+        // Turn on cursor
+        Console.CursorVisible = true;
+    }
+
+    public string GetPromptString(List<ListingPrompts> prompts)
+    {
+        List<ListingPrompts> unused = new List<ListingPrompts>();
+
+        foreach (ListingPrompts prompt in prompts)
+        {
+            if (prompt.GetHasBeenUsed() == false)
+            {
+                unused.Add(prompt);
+            }
+        }
+
+        // Reset Prompts
+        if (unused.Count == 0)
+        {
+            foreach(ListingPrompts prompt in prompts)
+            {
+                prompt.SetHasBeenUsed(false);
+            }
+            unused = prompts;
+        }
+
+
+        // select a random prompt
+        Random rand = new Random(); 
+        int index = rand.Next(unused.Count); 
+        ListingPrompts selected = unused[index]; 
+        selected.SetHasBeenUsed(true); 
+        
+        return selected.GetPromptString();
+    }
 
 }
