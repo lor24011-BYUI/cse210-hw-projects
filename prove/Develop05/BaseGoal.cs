@@ -24,10 +24,10 @@ public abstract class BaseGoal
     // Return Goal Details
     public virtual string GetListGoals()
     {
-        return $"Goal: {_name} Description: {description}"
+        return $"Goal: {_name} Description: {_description}";
     }
 
     // Force child programs to save file
-    public abstract string GetFileString
+    public abstract string GetFileString();
 
 }
