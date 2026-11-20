@@ -1,19 +1,5 @@
 using System;
 
-// class Program
-// {
-//     static void Main(string[] args)
-//     {
-//         Word myWord = new Word("Secret");
-
-//         myWord.Display();
-//         myWord.Hide();
-//         myWord.Display();
-//     }
-// }
-
-using System;
-
 public class Program
 {
     public static void Main(string[] args)
