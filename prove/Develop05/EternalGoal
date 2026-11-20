@@ -2,5 +2,34 @@ using System;
 
 public class EternalGoal : BaseGoal
 {
-    
+    // Call Constructor for file recall
+    public EternalGoal(string name, string description, int points)
+        : base(name, description, points)
+    {
+        
+    }
+
+    // Record Event Override
+    public override int RecordEvent()
+    {
+        return _points;
+    }
+
+    // IsComplete Report return false for EternalGoal
+    public override bool IsComplete()
+    {
+        return false;
+    }
+
+    // GetListGoals returns false IsComplete for EternalGoal
+    public override string GetListGoals()
+    {
+        return $"[] {base.GetListGoals()}";
+    }
+
+    // GetFileString and format it to be saved
+    public override string GetFileString()
+    {
+        return $"EternalGoal: {_name} , {_description}, {_points}";
+    }
 }
