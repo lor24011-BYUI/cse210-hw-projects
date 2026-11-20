@@ -14,20 +14,26 @@ public class SimpleGoal : BaseGoal
     // Record event
     public override int RecordEvent()
     {   
+        _isComplete = true;
+        return _points;
+    }
+
+    // Set IsComplete To 
+    public override bool IsComplete()
+    {
         if(_isComplete == false)
         {
             _isComplete = true;
-            return _points;
+            return _isComplete;
         }
-        
-        // Return 0 if _isComplete is true
         else
         {
-            return 0;
+            _isComplete = false;
+            return _isComplete;
         }
     }
 
-    // GetListGoas calles the goals and adds a checkbox
+    // GetListGoals calles the goals and adds a checkbox
     public override string GetListGoals()
     {
         string completed;
