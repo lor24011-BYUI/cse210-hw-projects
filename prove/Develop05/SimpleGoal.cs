@@ -46,12 +46,12 @@ public class SimpleGoal : BaseGoal
         {
             completed = " ";
         }
-        return $"[{completed}] base.GetListGoals()";
+        return $"[{completed}] {base.GetListGoals()}";
     }
 
     // Formate Goal to be saved
     public override string GetFileString()
     {
-        return $"SimpleGoal: {_name}, {_description}, {_points}, {_isComplete}";
+        return $"SimpleGoal,{_name},{_description},{_points},{_isComplete}";
     }
 }

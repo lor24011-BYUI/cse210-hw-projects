@@ -6,7 +6,7 @@ public class EternalGoal : BaseGoal
     public EternalGoal(string name, string description, int points)
         : base(name, description, points)
     {
-        
+        // N/A file constructor
     }
 
     // Record Event Override
@@ -30,6 +30,6 @@ public class EternalGoal : BaseGoal
     // GetFileString and format it to be saved
     public override string GetFileString()
     {
-        return $"EternalGoal: {_name} , {_description}, {_points}";
+        return $"EternalGoal,{_name},{_description},{_points}";
     }
 }

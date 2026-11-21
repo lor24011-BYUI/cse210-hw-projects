@@ -85,21 +85,42 @@ public class ListGoals
 
         // Clear list to prevent merging lists
         _goals.Clear();
-        
-        string[] lines = File.ReadAllLines(filename);
+        bool isFirstLine = true;
 
-        _score = int.Parse(lines);
-
-        for (int i = 1; if < lines.Length; i++)
+        foreach (string line in File.ReadAllLines(filename))
         {
-            string line = lines[i];
-            string[] parts = line.Split(":");
-            string goalType = parts;
-            string details = parts[4].Split(",");
-            if (goalType == "SimpleGoal")
+            if (isFirstLine)
             {
-                _goals.Add(new SimpleGoal(details, details[4], int.Parse(details[5]), bool.Parse[6]));
+                _score = int.Parse(line);
+                isFirstLine = false;
+            }
+            else
+            {
+                string[] parts = line.Split(",");
+                string goalType = parts[0];
+                string name = parts[1];
+                string description = parts[2];
+                int points = int.Parse(parts[3]);
+
+                // Goal Types
+                if (goalType == "SimpleGoal")
+                {
+                    bool isComplete = bool.Parse(parts[4]);
+                    _goals.Add(new SimpleGoal(name, description, points, isComplete));
+                }
+                else if (goalType == "EternalGoal")
+                {
+                    _goals.Add(new EternalGoal(name, description, points));
+                }
+                else if (goalType == "CheckListGoal")
+                {
+                    int target = int.Parse(parts[4]);
+                    int bonus = int.Parse(parts[5]);
+                    int amountCompleted = int.Parse(parts[6]);
+                    _goals.Add(new CheckListGoal(name, description, points, target, bonus, amountCompleted));
+                }
             }
         }
+        Console.WriteLine($"Goals Loaded from {filename}");
     }
 }

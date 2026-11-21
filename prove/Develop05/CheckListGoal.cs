@@ -1,6 +1,7 @@
+using System;
 using System.ComponentModel;
 using System.Runtime;
-using system;
+
 
 public class CheckListGoal : BaseGoal
 {
@@ -32,12 +33,17 @@ public class CheckListGoal : BaseGoal
         }
     }
 
+    public override bool IsComplete()
+    {
+        return _amountCompleted >= _target;
+    }
+
     // GetListGoals to display checklist
     public override string GetListGoals()
     {
         string completed;
 
-        if (IsComplete == true)
+        if (IsComplete() == true)
         {
             completed = "X";
         }
@@ -52,6 +58,6 @@ public class CheckListGoal : BaseGoal
     // Format for save
     public override string GetFileString()
     {
-        return $"CheckListGoal: {_name}, {_desription}, {_points}, {_bonus}, {_target}, {_amountCompleted}";
+        return $"CheckListGoal,{_name},{_description},{_points},{_bonus},{_target},{_amountCompleted}";
     }
 }
