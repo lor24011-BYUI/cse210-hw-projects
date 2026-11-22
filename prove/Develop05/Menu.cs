@@ -46,13 +46,13 @@ public class Menu
             else if (choice == "5")
             {
                 _goals.DisplayGoals();
-                Console.WriteLine("Which goal did you accomplush? \n");
+                Console.WriteLine("Which goal did you Complete? \n");
                 int goalNum = int.Parse(Console.ReadLine());
                 _goals.RecordEvent(goalNum);
             }
             else if (choice == "6")
             {
-                Console.WriteLine("Thank You for using Goals!");
+                Console.WriteLine("Thank You for making your Goals!");
             }
             else
             {
@@ -68,16 +68,17 @@ public class Menu
         Console.WriteLine(" 1. Simple Goal");
         Console.WriteLine(" 2. Eternal Goal");
         Console.WriteLine(" 3. Checklist Goal");
-        Console.WriteLine("Which type of Goal would you like to make?");
+        Console.WriteLine("Which type of Goal would you like to make? (Please Enter the Number to select) ");
 
         // Goal type selection
         string typeChoice = Console.ReadLine();
 
         // Goal Name
+        Console.WriteLine("What is the name of your goal? ");
         string name = Console.ReadLine();
 
         // Goal description
-        Console.WriteLine("Whati is a short description of your goal? ");
+        Console.WriteLine("What is a short description of your goal? ");
         string description = Console.ReadLine();
 
         // Goal Points

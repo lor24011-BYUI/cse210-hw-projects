@@ -19,18 +19,9 @@ public class SimpleGoal : BaseGoal
     }
 
     // Set IsComplete To 
-    public override bool IsComplete()
+    public override bool IsComplete() 
     {
-        if(_isComplete == false)
-        {
-            _isComplete = true;
-            return _isComplete;
-        }
-        else
-        {
-            _isComplete = false;
-            return _isComplete;
-        }
+        return _isComplete;
     }
 
     // GetListGoals calles the goals and adds a checkbox
